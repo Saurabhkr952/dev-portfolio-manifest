@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-portfolio
+  labels:
+    app: dev-portfolio
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dev-portfolio
+  template:
+    metadata:
+      labels:
+        app: dev-portfolio
+    spec:
+      imagePullSecrets:
+      - name: regsecret
+      containers:
+      - name: dev-portfolio
+        image: 278445542791.dkr.ecr.ap-south-1.amazonaws.com/react-app:done
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
