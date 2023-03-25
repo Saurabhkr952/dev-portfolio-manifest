@@ -18,7 +18,7 @@ spec:
       - name: regsecret
       containers:
       - name: dev-portfolio
-        image: 278445542791.dkr.ecr.ap-south-1.amazonaws.com/react-app:661bfd5ceeb312e62f84dae576fd78224e96bff2
+        image: 278445542791.dkr.ecr.ap-south-1.amazonaws.com/react-app:d50a656ca070537970659ee875eecb6b0bcf30cb
         imagePullPolicy: Always
         ports:
         - containerPort: 80
