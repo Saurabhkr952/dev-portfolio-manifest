@@ -1,4 +1,4 @@
-name: Kubescape scanning for misconfigurations
+name: Kubescape scanning for misconfigurations using NSA & MITRE framework
 on: [push, pull_request,workflow_dispatch]
 jobs:
   kubescape:
@@ -14,7 +14,6 @@ jobs:
         with:
           format: sarif
           outputFile: results
-          severityThreshold: high,medium
           frameworks: |
             nsa,mitre
       - name: Upload Kubescape scan results to Github Code Scanning
