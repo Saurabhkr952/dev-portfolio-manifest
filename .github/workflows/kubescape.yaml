@@ -14,6 +14,7 @@ jobs:
         with:
           format: sarif
           outputFile: results
+          files: deployment.yaml
           frameworks: |
             nsa,mitre
       - name: Upload Kubescape scan results to Github Code Scanning
