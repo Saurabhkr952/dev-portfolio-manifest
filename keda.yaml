@@ -1,0 +1,21 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+ name: nginx-scale
+ namespace: ingress-nginx # same as the namespace of the deployment
+spec:
+ scaleTargetRef:
+   kind: Deployment
+   name: ingress-nginx-controller # nginx svc name
+ minReplicaCount: 1
+ maxReplicaCount: 20
+ cooldownPeriod: 30
+ pollingInterval: 1
+ triggers:
+ - type: prometheus
+   metadata:
+     serverAddress: http://kube-prometheus-stack-prometheus.prometheus.svc.cluster.local:9090
+     metricName: active_connections
+     query: |
+       max(nginx_ingress_controller_nginx_process_connections)
+     threshold: "100"
