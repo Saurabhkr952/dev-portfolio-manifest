@@ -2,37 +2,16 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: dev-portfolio-ingress
-  namespace: default
 spec:
   ingressClassName: nginx
   rules:
-  - host: 
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: dev-portfolio
-            port:
-              number: 31000
-  
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-#metadata:
-#  name: dev-portfolio-ingress
-#  namespace: monitoring
-#spec:
-#  ingressClassName: nginx
-#  rules:
-# #   - host: dev-portfolio.com  # Fixed indentation here
-#    - http:
-#        paths:
-#          - path: /
-#            pathType: Prefix
-#            backend:
-#              service:
-#                name: dev-portfolio
-#                port:
-#                  number: 80
-
+    - host: "a8148e87794034c5d81ebda58d349948-451852869.ap-south-1.elb.amazonaws.com"
+      http:
+        paths:
+          - backend:
+              service:
+                name: dev-portfolio
+                port:
+                  number: 31000
+            path: /
+            pathType: Prefix     
