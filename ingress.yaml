@@ -1,17 +1,25 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-issuer # to configure https add the clusterissuer name
   name: dev-portfolio-ingress
 spec:
   ingressClassName: nginx
   rules:
-    - host: "a8148e87794034c5d81ebda58d349948-451852869.ap-south-1.elb.amazonaws.com"
-      http:
-        paths:
-          - backend:
-              service:
-                name: dev-portfolio
-                port:
-                  number: 31000
-            path: /
-            pathType: Prefix     
+  - host: dev-portfolio.34.46.239.84.nip.io # change the ip with you loadbalancer external ip address
+    http:
+      paths:
+      - backend:
+          service:
+            name: dev-portfolio
+            port:
+              number: 31000
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - dev-portfolio.34.46.239.84.nip.io  # change the ip with your external loadbalancer ip address
+    secretName: portfolio-tls-secret     # should match the secret name in your certificate.yaml
+
+# Note: The IP address 34.46.239.84 represents the external load balancer IP assigned by the nginx-ingress-controller when it is deployed.
