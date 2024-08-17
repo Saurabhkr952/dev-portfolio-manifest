@@ -1,6 +1,9 @@
 ## HTTPS Configuration with Cert-Manager
 To secure traffic to our application, we use Cert-Manager for managing TLS certificates. This setup ensures that our application is accessible over HTTPS.
 
+### Installation of Cert-Manager
+Check official documentation to install [cert-manager](https://cert-manager.io/docs/installation/kubectl/) in your Kubernetes Cluster.
+
 ### Configuration
 
 **ClusterIssuer:** Configures Cert-Manager to use Let's Encrypt for issuing certificates. View ClusterIssuer YAML
