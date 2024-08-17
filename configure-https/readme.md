@@ -38,5 +38,10 @@ spec:
 ```
 
 
-
+**Add this annotation in ingress file**
+```yaml
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-issuer   # Specifies the ClusterIssuer to use for issuing TLS certificates. Ensure this matches the name of your ClusterIssuer resource.
+```    
 
