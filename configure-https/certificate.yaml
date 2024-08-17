@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: dev-portfolio-certificate
+spec:
+  secretName: portfolio-tls-secret  
+  issuerRef:
+    name: letsencrypt-issuer
+    kind: ClusterIssuer
+  commonName: dev-portfolio.34.46.239.84.nip.io
+  dnsNames:
+  - dev-portfolio.34.46.239.84.nip.io
