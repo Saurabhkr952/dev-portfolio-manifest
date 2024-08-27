@@ -18,7 +18,7 @@ spec:
       - name: regsecret
       containers:
       - name: dev-portfolio
-        image: saurabhkr952/dev-portfolio:223ec6a241deb20c7c4fd1338ba7f9e5cabe1d0d
+        image: saurabhkr952/dev-portfolio:59d2a2bf051511ab9aff0a314b554891440a6632
         imagePullPolicy: Always
         ports:
         - containerPort: 80
